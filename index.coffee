@@ -19,4 +19,11 @@ app.get '/', (req, res) ->
   res.locals.users = userList
   res.render 'index'
 
+app.post '/update/:user', (req, res) ->
+  payload = {
+    user: req.params.user
+    message: req.body.message
+  }
+  res.send payload
+
 app.listen 5678, -> console.log 'server up on 5678…'
