@@ -1,4 +1,4 @@
-<tr id="{{uuid}}" class="user">
+<tr id="{{uuid}}" class="user {{#message}}dirty{{/message}}">
   <td>{{name}}</td>
-  <td class="update">nothing yet…</td>
+  <td class="update">{{#message}}{{message}}{{/message}}{{^message}}nothing yet…{{/message}}</td>
 </tr>

@@ -7,11 +7,10 @@ var editable = document.querySelectorAll('.update');
     var parentId = this.parentNode.id;
     this.parentNode.classList.add('dirty');
 
-    url = '/update/' + parentId + '/';
-    payload = {message: this.textContent};
+    payload = {user: parentId, message: this.textContent};
     console.log('--> sending', payload);
 
-    Jaxx.post(url, payload, function(){
+    Jaxx.post('/update', payload, function(){
       console.log('<-- response', this.responseText);
     }, function(){
       console.log('ajax failure', this);
