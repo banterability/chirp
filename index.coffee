@@ -10,7 +10,7 @@ app.set 'layout', 'layout'
 app.set 'partials', user: '_user'
 app.engine 'html', hogan
 
-app.use express.static '/public', "#{__dirname}/public"
+app.use '/public', express.static "#{__dirname}/public"
 app.use bodyParser.json()
 
 userList = setupFakeUsers()
