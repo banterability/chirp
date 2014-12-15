@@ -11,3 +11,5 @@ class Store
 
   getAll: ->
     @values
+
+module.exports = Store
