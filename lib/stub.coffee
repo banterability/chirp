@@ -6,5 +6,4 @@ NAMES = ['Ana', 'Bill', 'Claudette', 'Danny', 'Erika', 'Fred', 'Grace', 'Henri',
 
 module.exports =
   setupFakeUsers: (count=6) ->
-    sampleNames = sample NAMES, count
-    sampleNames.map (userName) -> {name: userName, uuid: uuid.v4()}
+    sample(NAMES, count).map (userName) -> {name: userName, uuid: uuid.v4()}
