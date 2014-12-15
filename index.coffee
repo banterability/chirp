@@ -1,7 +1,7 @@
 bodyParser = require 'body-parser'
 express = require 'express'
 hogan = require 'hogan-express'
-{setupFakeUsers} = require './stub'
+{setupFakeUsers} = require './lib/stub'
 Store = require './lib/store'
 
 app = express()
