@@ -2,6 +2,7 @@ bodyParser = require 'body-parser'
 express = require 'express'
 hogan = require 'hogan-express'
 {setupFakeUsers} = require './stub'
+Store = require './lib/store'
 
 app = express()
 
@@ -14,17 +15,17 @@ app.use '/public', express.static "#{__dirname}/public"
 app.use bodyParser.json()
 
 userList = setupFakeUsers()
-messageList = {}
+messageList = new Store()
 
 app.get '/', (req, res) ->
   for user in userList
-    user.message = messageList[user.uuid] if messageList[user.uuid]
+    user.message = message if message = messageList.get user.uuid
   res.locals.users = userList
   res.render 'index'
 
 app.post '/update', (req, res) ->
   {user, message} = req.body
-  messageList[user] = message
+  messageList.set user, message
   res.send {status: 'ok'}
 
 app.listen 5678, -> console.log 'server up on 5678…'
